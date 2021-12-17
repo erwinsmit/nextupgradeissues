@@ -14,10 +14,10 @@ const handle = app.getRequestHandler();
 module.exports = async function (context, req) {
     await app.prepare();
     
-    const parsedUrl = parse("/", true)
+    context.req.url = "/";
 
     try {    
-        await handle(context.req, context.res, parsedUrl);
+        await handle(context.req, context.res);
     } catch(e) {
         console.error(e);
 
